@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-
-
+import com.spring.cajero.automatico.model.dtos.DtoRequestUpdateMonedasBilletes;
 import com.spring.cajero.automatico.model.repositories.IRepositoryEntityManager;
 
 @Service(value = "services")
@@ -43,6 +42,19 @@ public class Services implements IServices{
 	public Object getSaldoActual() {
 
 		return this.repositoryEntityManager.getSaldoActual();
+	}
+
+	@Override
+	public void updateMonedasBilletes(DtoRequestUpdateMonedasBilletes dto) {
+		this.repositoryEntityManager.updateMonedasBilletes(dto.getBillete20(),
+				dto.getBillete50(),
+				dto.getBillete100(), 
+				dto.getBillete200(),
+				dto.getMoneda5(),
+				dto.getMoneda10(),
+				dto.getMoneda20());
+		
+		
 	}
 
 }

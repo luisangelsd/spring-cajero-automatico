@@ -51,4 +51,20 @@ public class RepositoryEntityManager implements IRepositoryEntityManager {
 		return saldo;
 	}
 
+	
+	@Transactional
+	@Override
+	public void updateMonedasBilletes(Integer bi20, Integer bi50, Integer bi100, Integer bi200, Integer mo5,
+			Integer mo10, Integer mo20) {
+		this.entityManager.createNativeQuery("CALL updateMonedasBilletes( :bi_20 , :bi_50, :bi_100, :bi_200, :mo_5, :mo_10, :mo_20) ")
+		.setParameter("bi_20", bi20)
+		.setParameter("bi_50", bi50)
+		.setParameter("bi_100", bi100)
+		.setParameter("bi_200", bi200)
+		.setParameter("mo_5", mo5)
+		.setParameter("mo_10", mo10)
+		.setParameter("mo_20", mo20).executeUpdate();
+		
+	}
+
 }
