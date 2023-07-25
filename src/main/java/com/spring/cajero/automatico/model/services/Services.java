@@ -23,7 +23,7 @@ public class Services implements IServices{
 	//-- Metodos
 	
 	@Override
-	public void updateCantidadbyMonedasBilletes(String tipo, Integer denominacion, Integer cantidad) {
+	public void updateCantidadbyMonedasBilletes(String tipo, Long denominacion, Long cantidad) {
 		//this.iCrudRepository.updateCantidadbyMonedasBilletes(tipo, denominacion, cantidad);	
 	}
 
@@ -33,7 +33,7 @@ public class Services implements IServices{
 	}
 
 	@Override
-	public Object retirarSaldo(Integer cantidad) {
+	public Object retirarSaldo(Long cantidad) {
  
 		return this.repositoryEntityManager.retirarSaldo(cantidad);
 	}

@@ -29,7 +29,7 @@ public class RepositoryEntityManager implements IRepositoryEntityManager {
 	}
 
 	@Override
-	public void updateCantidadbyMonedasBilletes (String tipo, Integer denominacion, Integer cantidad) {
+	public void updateCantidadbyMonedasBilletes (String tipo, Long denominacion, Long cantidad) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -37,7 +37,7 @@ public class RepositoryEntityManager implements IRepositoryEntityManager {
 
 	
 	@Override
-	public Object retirarSaldo(Integer cantidad) {	
+	public Object retirarSaldo(Long cantidad) {	
 		return  
 				this.entityManager.createNativeQuery("CALL retirar_dinero( :cantidad ); ")
 				.setParameter("cantidad", cantidad)
@@ -54,8 +54,8 @@ public class RepositoryEntityManager implements IRepositoryEntityManager {
 	
 	@Transactional
 	@Override
-	public void updateMonedasBilletes(Integer bi20, Integer bi50, Integer bi100, Integer bi200, Integer mo5,
-			Integer mo10, Integer mo20) {
+	public void updateMonedasBilletes(Long bi20, Long bi50, Long bi100, Long bi200, Long mo5,
+			Long mo10, Long mo20) {
 		this.entityManager.createNativeQuery("CALL updateMonedasBilletes( :bi_20 , :bi_50, :bi_100, :bi_200, :mo_5, :mo_10, :mo_20) ")
 		.setParameter("bi_20", bi20)
 		.setParameter("bi_50", bi50)

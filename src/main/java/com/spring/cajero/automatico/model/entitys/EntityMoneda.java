@@ -18,24 +18,24 @@ public class EntityMoneda implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_moneda;
+	private Long id_moneda;
 	
 	@NotNull(message = "La denominación no puede estar vacia")
 	@Column(unique = true)
-	private Integer denominacion;
+	private Long denominacion;
 	
 	
-	private Integer cantidad;
+	private Long cantidad;
 	
 		
 
 	//-- Gettes and Setters
-	public Integer getDenominacion() {	return denominacion;	}
-	public void setDenominacion(Integer denominacion) {this.denominacion = denominacion;	}
-	public Integer getCantidad() {		return cantidad;	}
-	public void setCantidad(Integer cantidad) {this.cantidad = cantidad;	}
-	public Integer getId_moneda() {	return id_moneda;	}
-	public void setId_moneda(Integer id_moneda) {	this.id_moneda = id_moneda;	}
+	public Long getDenominacion() {	return denominacion;	}
+	public void setDenominacion(Long denominacion) {this.denominacion = denominacion;	}
+	public Long getCantidad() {		return cantidad;	}
+	public void setCantidad(Long cantidad) {this.cantidad = cantidad;	}
+	public Long getId_moneda() {	return id_moneda;	}
+	public void setId_moneda(Long id_moneda) {	this.id_moneda = id_moneda;	}
 
 	
 	private static final long serialVersionUID = 1L;
@@ -44,8 +44,8 @@ public class EntityMoneda implements Serializable {
 
 
 	//-- Constructores
-	public EntityMoneda(@NotNull(message = "La denominación no puede estar vacia") Integer denominacion,
-			@NotNull(message = "La cantidad no puede estar vacia") Integer cantidad) {
+	public EntityMoneda(@NotNull(message = "La denominación no puede estar vacia") Long denominacion,
+			@NotNull(message = "La cantidad no puede estar vacia") Long cantidad) {
 		this.denominacion = denominacion;
 		this.cantidad = cantidad;
 	}

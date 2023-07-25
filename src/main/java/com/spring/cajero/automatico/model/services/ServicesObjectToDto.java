@@ -72,13 +72,13 @@ public class ServicesObjectToDto implements IServicesObjectToDto {
 							//-- Si es true significa que llenaremos un dtoMoneda
 							if (estado==true) {				
 								
-								DtoMoneda dtoMoneda=new DtoMoneda( Integer.parseInt(fila[0]), Integer.parseInt(fila[1]));
+								DtoMoneda dtoMoneda=new DtoMoneda( Long.parseLong(fila[0]), Long.parseLong(fila[1]));
 								listMonedas.add(dtoMoneda);
 								estado=false;
 								
 							}else {
 								//-- Si es false significa que llenaremos un dtoBillete
-								DtoBillete dtoBillete = new DtoBillete( Integer.parseInt(fila[0]), Integer.parseInt(fila[1]));
+								DtoBillete dtoBillete = new DtoBillete( Long.parseLong(fila[0]), Long.parseLong(fila[1]));
 								listDtoBilletes.add(dtoBillete);
 								estado=true;
 							}
@@ -125,9 +125,9 @@ public class ServicesObjectToDto implements IServicesObjectToDto {
 
 
 	@Override
-	public Integer objectToIntegerSaldoActual(Object object) throws JsonProcessingException {
+	public Long objectToIntegerSaldoActual(Object object) throws JsonProcessingException {
 		String dato = mapper.writeValueAsString(object);
-		Integer saldoActual= Integer.valueOf(dato);
+		Long saldoActual= Long.valueOf(dato);
 		return saldoActual;
 	}
 	

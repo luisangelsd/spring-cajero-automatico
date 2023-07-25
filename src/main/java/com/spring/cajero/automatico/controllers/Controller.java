@@ -53,7 +53,7 @@ public class Controller {
 	public Map<String, Object> saldoActual() throws JsonProcessingException{
 		
 		Object object= this.services.getSaldoActual();
-		Integer saldoActual = this.servicesObjectDto.objectToIntegerSaldoActual(object);
+		Long saldoActual = this.servicesObjectDto.objectToIntegerSaldoActual(object);
 		
 		Map<String, Object> map =new HashMap<>();
 		map.put("saldo_actual", saldoActual);
@@ -64,11 +64,11 @@ public class Controller {
 	
 	@GetMapping("/retirar-saldo/{cantidad}")
 	@ResponseStatus(HttpStatus.OK)
-	public DtoRetirarSaldo retirarSaldo(@PathVariable Integer cantidad) throws JsonProcessingException{	
+	public DtoRetirarSaldo retirarSaldo(@PathVariable Long cantidad) throws JsonProcessingException{	
 		
 		//-- Validar que cuentes con el saldo suficiente
 		Object objectSaldo= this.services.getSaldoActual();
-		Integer saldoActual = this.servicesObjectDto.objectToIntegerSaldoActual(objectSaldo);
+		Long saldoActual = this.servicesObjectDto.objectToIntegerSaldoActual(objectSaldo);
 		if( saldoActual < cantidad) {
 			throw new ExceptionSaldoInsuficiente("¡Lo sentimos no tienes saldo suficiente!");
 		}

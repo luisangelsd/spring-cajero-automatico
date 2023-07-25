@@ -17,25 +17,25 @@ public class EntityBillete implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_billete;
+	private Long id_billete;
 
 	
 	@NotNull(message = "La Denominación no puede estar vacia")
 	@Column(unique = true)
-	private Integer denominacion;
+	private Long denominacion;
 	
 
-	private Integer cantidad;
+	private Long cantidad;
 	
 	
 	
 	//-- Getters and Setters
-	public Integer getDenominacion() {return denominacion;	}
-	public void setDenominacion(Integer denominacion) {this.denominacion = denominacion;	}
-	public Integer getCantidad() {	return cantidad;	}
-	public void setCantidad(Integer cantidad) {		this.cantidad = cantidad;	}
-	public Integer getId_billete() {	return id_billete;	}
-	public void setId_billete(Integer id_billete) {	this.id_billete = id_billete;}
+	public Long getDenominacion() {return denominacion;	}
+	public void setDenominacion(Long denominacion) {this.denominacion = denominacion;	}
+	public Long getCantidad() {	return cantidad;	}
+	public void setCantidad(Long cantidad) {		this.cantidad = cantidad;	}
+	public Long getId_billete() {	return id_billete;	}
+	public void setId_billete(Long id_billete) {	this.id_billete = id_billete;}
 
 
 	private static final long serialVersionUID = 1L;
@@ -44,8 +44,8 @@ public class EntityBillete implements Serializable{
 	
 	//-- Constructores
 	
-	public EntityBillete(@NotNull(message = "La Denominación no puede estar vacia") Integer denominacion,
-			Integer cantidad) {
+	public EntityBillete(@NotNull(message = "La Denominación no puede estar vacia") Long denominacion,
+			Long cantidad) {
 		this.denominacion = denominacion;
 		this.cantidad = cantidad;
 	}

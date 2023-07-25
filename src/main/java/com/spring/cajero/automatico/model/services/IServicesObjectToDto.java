@@ -11,7 +11,7 @@ public interface IServicesObjectToDto {
 	 
 	public Map<String, Object> objectToListObjectListarDenominacionesYCantidad(Object object) throws JsonProcessingException; 
 	public DtoRetirarSaldo objectToDtoRetirarSaldo(Object object) throws JsonProcessingException;
-	public Integer objectToIntegerSaldoActual(Object object) throws JsonProcessingException;
+	public Long objectToIntegerSaldoActual(Object object) throws JsonProcessingException;
 	
 
 }
