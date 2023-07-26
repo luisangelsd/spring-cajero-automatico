@@ -2,6 +2,9 @@ package com.spring.cajero.automatico.model.services;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -55,6 +58,37 @@ public class Services implements IServices{
 				dto.getMoneda20());
 		
 		
+	}
+
+	//--
+	Long cantidadRestante = 0L;
+	@Override
+	public Boolean validaSiLaCantidadEsValida(Long cantidad) {
+		
+		  List<Long> denominaciones = new ArrayList<>();
+	        denominaciones.add(200L);
+	        denominaciones.add(100L);
+	        denominaciones.add(50L);
+	        denominaciones.add(20L);
+	        denominaciones.add(10L);
+	        denominaciones.add(5L);
+	        this.cantidadRestante = cantidad;
+
+
+	        denominaciones.forEach( valor ->{
+
+	            while(cantidadRestante >= valor) {
+	                cantidadRestante = cantidadRestante - valor;
+	            }
+
+
+	        });
+
+	        if (this.cantidadRestante == 0) {
+	            return true;
+	        }
+
+	        return false;
 	}
 
 }

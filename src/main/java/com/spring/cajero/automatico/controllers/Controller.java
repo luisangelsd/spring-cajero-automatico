@@ -46,8 +46,6 @@ public class Controller {
 	ObjectMapper mapper = new ObjectMapper();
 	
 	//-- EndPoints
-	
-	
 	@GetMapping("/saldo-actual")
 	@ResponseStatus(HttpStatus.OK)
 	public Map<String, Object> saldoActual() throws JsonProcessingException{
@@ -65,6 +63,12 @@ public class Controller {
 	@GetMapping("/retirar-saldo/{cantidad}")
 	@ResponseStatus(HttpStatus.OK)
 	public DtoRetirarSaldo retirarSaldo(@PathVariable Long cantidad) throws JsonProcessingException{	
+		
+		//-- Valida que la cantidad a retirar sea compatible con las denominaciones
+		if (!this.services.validaSiLaCantidadEsValida(cantidad)) {
+			throw new RuntimeException("¡La cantidad a retirar no es valida!");
+		}
+		
 		
 		//-- Validar que cuentes con el saldo suficiente
 		Object objectSaldo= this.services.getSaldoActual();

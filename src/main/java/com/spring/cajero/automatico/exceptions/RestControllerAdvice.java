@@ -15,11 +15,31 @@ public class RestControllerAdvice {
 		Map<String, Object> errors;
 		Map<String, Object> responseBody;
 		
-	//---------------
+
 		
-	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-	@ExceptionHandler(Exception.class)
-	public Map<String, Object> exception(Exception e){
+	@ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+	@ExceptionHandler(ExceptionSaldoInsuficiente.class)
+	public Map<String, Object > exceptionSaldoInsuficiente(ExceptionSaldoInsuficiente e){
+		
+		this.responseBody=new HashMap<>();
+        this.errors=new HashMap<>();
+        
+        //-- Preparando Errores
+        errors.put("mensaje", e.getMessage());
+        
+        //-- Preparando ResponseBody
+        this.responseBody.put("errors", errors);
+		this.responseBody.put("timestamp", LocalDateTime.now());
+		this.responseBody.put("code", e.hashCode());
+		this.responseBody.put("send", "RestControllerAdvice");	
+        return  this.responseBody;
+	}
+	
+	//---------------
+	
+	@ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+	@ExceptionHandler(RuntimeException.class)
+	public Map<String, Object> RuntimeException(Exception e){
 		
 		this.responseBody=new HashMap<>();
         this.errors=new HashMap<>();
@@ -35,16 +55,19 @@ public class RestControllerAdvice {
 		this.responseBody.put("send", "RestControllerAdvice");	
         return  this.responseBody;
 	}
-		
-	@ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
-	@ExceptionHandler(ExceptionSaldoInsuficiente.class)
-	public Map<String, Object > exceptionSaldoInsuficiente(ExceptionSaldoInsuficiente e){
+	
+	//---------------
+	
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	@ExceptionHandler(Exception.class)
+	public Map<String, Object> exception(Exception e){
 		
 		this.responseBody=new HashMap<>();
         this.errors=new HashMap<>();
         
         //-- Preparando Errores
         errors.put("mensaje", e.getMessage());
+        errors.put("localizedMessage", e.getLocalizedMessage());
         
         //-- Preparando ResponseBody
         this.responseBody.put("errors", errors);

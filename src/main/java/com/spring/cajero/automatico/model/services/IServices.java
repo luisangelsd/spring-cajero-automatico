@@ -9,6 +9,7 @@ public interface IServices {
 	public Object retirarSaldo(Long cantidad);
 	public Object getSaldoActual();
 	public void updateMonedasBilletes( DtoRequestUpdateMonedasBilletes dto);
+	public Boolean validaSiLaCantidadEsValida(Long cantidad);
 
 
 }
