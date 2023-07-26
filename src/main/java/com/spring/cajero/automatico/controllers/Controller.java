@@ -87,6 +87,7 @@ public class Controller {
 	@GetMapping("/listar-saldo")
 	@ResponseStatus(HttpStatus.OK)
 	public Map<String, Object> listarSaldo() throws JsonProcessingException{
+		
 		Object  object = this.services.listarSaldoDenominacionCantidad();
 		Map<String, Object> bodyResponse = this.servicesObjectDto.objectToListObjectListarDenominacionesYCantidad(object);
 		bodyResponse.put("total", this.services.getSaldoActual());
