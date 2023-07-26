@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "a6609082-99ec-4663-8792-3bca917e2c31",
+		"name": "Api - Cajero",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listar Saldo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/listar-saldo",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"listar-saldo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retirar Saldo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/retirar-saldo/100",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"retirar-saldo",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Saldo Actual",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/saldo-actual",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"saldo-actual"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Añadir Monedas / Billetes",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"billete20\": \"1\",\r\n\"billete50\": \"1\",\r\n\"billete100\": \"1\",\r\n\"billete200\": \"1\",\r\n\"moneda5\": \"1\",\r\n\"moneda10\": \"1\",\r\n\"moneda20\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/update/monedas-billetes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"update",
+						"monedas-billetes"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
